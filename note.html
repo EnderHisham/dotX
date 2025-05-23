@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #notepad{
+    font-size: 15pt;
+  }
+  body{
+    background-color: cornflowerblue;
+  }
+  button{
+    font-size: 15pt;
+  }
+</style>
+<body>
+  <!-- notes.html -->
+<center><h2>Notes</h2>
+<textarea id="notepad" rows="10" cols="30" placeholder="type.."></textarea><br>
+<button onclick="saveNote()">Save</button>
+<button onclick="loadNote()">Load</button>
+</center>
+<script>
+  function saveNote() {
+    localStorage.setItem("dassto_note", document.getElementById("notepad").value);
+    alert("Note saved!");
+  }
+
+  function loadNote() {
+    document.getElementById("notepad").value = localStorage.getItem("dassto_note") || "";
+  }
+</script>
+
+</body>
+</html>
