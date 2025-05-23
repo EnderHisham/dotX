@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    background-color: rgb(92, 209, 81);
+  }
+  div{
+    font-size: 50pt;
+  }
+</style>
+<body>
+  <center><div class="window" data-app="pixel-art">
+    <div class="title-bar">Pixel Art</div>
+    <div class="pixel-grid" id="pixel-canvas"></div>
+    <button id="clear-pixels">Clear</button>
+  </div>
+  </center>
+  <script>
+    const canvas = document.getElementById("pixel-canvas");
+    let isDrawing = false;
+    let currentColor = "#000000";
+  
+    // Create 10x10 grid
+    for (let i = 0; i < 100; i++) {
+      const pixel = document.createElement("div");
+      pixel.className = "pixel";
+      pixel.addEventListener("mousedown", () => {
+        isDrawing = true;
+        pixel.style.backgroundColor = currentColor;
+      });
+      pixel.addEventListener("mouseenter", () => {
+        if (isDrawing) pixel.style.backgroundColor = currentColor;
+      });
+      canvas.appendChild(pixel);
+    }
+  
+    document.getElementById("clear-pixels").addEventListener("click", () => {
+      document.querySelectorAll(".pixel").forEach(p => p.style.backgroundColor = "");
+    });
+  </script>
+  
+  <style>
+    .window[data-app="pixel-art"] {
+      width: 220px;
+      height: 270px;
+    }
+    .pixel-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 20px);
+      gap: 1px;
+      margin: 10px;
+    }
+    .pixel {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #ddd;
+      cursor: crosshair;
+    }
+  </style>
+</body>
+</html>

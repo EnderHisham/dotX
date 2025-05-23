@@ -1,0 +1,132 @@
+/* General styling */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+}
+
+/* Container styling */
+.container {
+  border-radius: 5pt;
+  text-align: center;
+}
+
+/* Header styling */
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-style: bold;
+  position: relative;
+  bottom: 100pt;
+  left: 50pt;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Input box styling */
+input {
+  width: 400px;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+/* Button styling */
+button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  
+ box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.3); /* Bigger shadow on hover */
+ 
+}
+
+/* Hover effect for the button */
+button:hover {
+  background-color: #0056b3;
+  
+  transform: scale(1.5);
+  border-radius: 5pt;
+  box-shadow: black;
+}
+#h11 {
+position: relative;
+left: 40pt;
+}
+a {
+position: relative;
+right: 0pt;
+color: red;
+bottom: 0pt;
+
+}
+
+#back {
+position: relative;
+top: 150pt;
+left: 0pt;
+}
+#IN {
+position: relative;
+right: 80pt;
+bottom: 150pt;
+color: lightskyblue;
+background-color: white;
+border-radius: 10pt;
+font-size: smaller;
+font-style: italic;
+font-weight: bold;
+border: solid;
+
+}
+h4 {
+font-size: medium;
+}
+#start {
+position: relative;
+top: 250pt;
+left: 200pt;
+}
+#start:hover {
+size: 10pt;
+}
+#start:active {
+transform: scale("2");
+size: 200pt;
+}
+#theme {
+position:relative;
+top: 100pt;
+right: 380pt;
+}
+#h22 {
+position: relative;
+left: 20pt;
+}
+h1 {
+position: relative;
+left: 400pt;
+}
+#IN2 {
+color: lightcoral;
+font-weight: bold;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

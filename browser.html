@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dotXsearch(1.0)</title>
+</head>
+<body>
+    
+
+  <link rel="stylesheet" href="b.css">
+<div>
+        <h1 id="h11">sDassto Search 1.0</h1>
+        <form action="" onsubmit="event.preventDefault(); performSearch();">
+            <input type="text" id="urlbox" placeholder="Type your search or enter a URL">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <script>
+      
+        function performSearch() {
+            const query = document.getElementById('urlbox').value.trim();
+            if (query) {
+                // Check for suspicious patterns (basic simulation)
+                const suspiciousPatterns = /malware|phishing|virus|trojan|\.exe|\.scr|\.bat/gi;
+                if (suspiciousPatterns.test(query)) {
+                    alert('⚠️ Warning: The input contains suspicious keywords that might indicate malware or a harmful URL.');
+                    return; // Prevent further action
+                }
+
+                // Check if the input looks like a URL
+                const isURL = query.startsWith('http') || (query.includes('.') && !query.includes(' '));
+                
+                if (isURL) {
+                    // Open as a URL
+                    const url = query.startsWith('http') ? query : `https://${query}`;
+                    window.open(url, '_blank');
+                } else {
+                    // Perform a search using Google
+                    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                    window.open(searchUrl, '_blank');
+                }
+            } else {
+                alert('Please enter something to search or open.');
+            }
+        }
+   
+    </script>
+  <script src="s.js"></script>
+</body>
+</html>

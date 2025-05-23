@@ -1,0 +1,33 @@
+<style>
+  div{
+    font-size: 40pt;
+  }
+</style>
+<center><div class="window" data-app="dice">
+  <div class="title-bar">Dice Roller</div>
+  <div class="dice-result" id="dice">⚄</div>
+  <button id="roll-btn">Roll Dice</button>
+</div>
+</center>
+<script>
+  const diceFaces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+  document.getElementById("roll-btn").addEventListener("click", () => {
+    const dice = document.getElementById("dice");
+    dice.textContent = "⌛";
+    setTimeout(() => {
+      dice.textContent = diceFaces[Math.floor(Math.random() * 6)];
+    }, 300);
+  });
+</script>
+
+<style>
+  .window[data-app="dice"] {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+  }
+  .dice-result {
+    font-size: 4em;
+    margin: 10px 0;
+  }
+</style>

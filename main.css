@@ -1,0 +1,53 @@
+body{
+  background-color: #0e76a8;
+
+}
+#b{
+  font-size: 50pt;
+}
+#b1 {
+  position: relative;
+  bottom: 91pt;
+  left: 60pt;
+  font-size: 50pt;
+}
+h1{
+  font-family: 'Times New Roman', Times, serif;
+  color: cornsilk;
+}
+#h22{
+  position: relative;
+  bottom: 80pt;
+  font-size: 10pt;
+  list-style-type: none;
+
+}
+header{
+  position: relative;
+  top: 150pt;
+  
+  justify-content:baseline;
+  background-color: aliceblue;
+}
+li{
+  text-decoration: none;
+  overflow: hidden;
+
+  
+}
+ul{
+  size: 10pt;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+#a1{
+  
+  padding: 10pt;
+  color: black;
+}
+nav{
+  background-color: white;
+}

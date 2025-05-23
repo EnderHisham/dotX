@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <center><div class="window" data-app="clock">
+    <div class="title-bar">Clock</div>
+    <div class="clock-display" id="time">12:00:00</div>
+    <div class="clock-date" id="date">Monday, Jan 1</div>
+  </div>
+  </center>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("time").textContent = now.toLocaleTimeString();
+      document.getElementById("date").textContent = now.toLocaleDateString('en-US', { 
+        weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' 
+      });
+    }
+    setInterval(updateClock, 1000);
+  </script>
+  
+  <style>
+    .window[data-app="clock"] {
+      width: 200px;
+      height: 120px;
+      text-align: center;
+    }
+    .clock-display {
+      font-size: 2em;
+      margin: 10px 0;
+    }
+    .clock-date {
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</body>
+</html>
