@@ -1,0 +1,111 @@
+<div class="window" data-app="pong">
+  <div class="title-bar">Pong</div>
+  <canvas id="pong-canvas"></canvas>
+  <div class="pong-controls">
+    <span id="p1-score">0</span> 
+    <button id="start-pong">Start Game(pc only)</button>
+    <span id="p2-score">0</span>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById("pong-canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = 300;
+  canvas.height = 200;
+  
+  // Game objects
+  const ball = { x: 150, y: 100, dx: 2, dy: 2, r: 5 };
+  const paddle1 = { x: 10, y: 85, w: 10, h: 30 };
+  const paddle2 = { x: 280, y: 85, w: 10, h: 30 };
+  let p1Score = 0, p2Score = 0;
+  
+  function drawPong() {
+    // Clear canvas
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw ball
+    ctx.fillStyle = "#FFF";
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Draw paddles
+    ctx.fillRect(paddle1.x, paddle1.y, paddle1.w, paddle1.h);
+    ctx.fillRect(paddle2.x, paddle2.y, paddle2.w, paddle2.h);
+    
+    // Move ball
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+    
+    // Paddle collision
+    if (ball.y + ball.r > paddle1.y && ball.y - ball.r < paddle1.y + paddle1.h && 
+        ball.x - ball.r < paddle1.x + paddle1.w) ball.dx *= -1;
+    if (ball.y + ball.r > paddle2.y && ball.y - ball.r < paddle2.y + paddle2.h && 
+        ball.x + ball.r > paddle2.x) ball.dx *= -1;
+    
+    // Wall collision
+    if (ball.y <= 0 || ball.y >= canvas.height) ball.dy *= -1;
+    
+    // Scoring
+    if (ball.x <= 0) { p2Score++; resetBall(); }
+    if (ball.x >= canvas.width) { p1Score++; resetBall(); }
+    
+    document.getElementById("p1-score").textContent = p1Score;
+    document.getElementById("p2-score").textContent = p2Score;
+  }
+  
+  function resetBall() {
+    ball.x = 150;
+    ball.y = 100;
+    ball.dx = (Math.random() > 0.5 ? 2 : -2);
+    ball.dy = (Math.random() > 0.5 ? 2 : -2);
+  }
+  
+  // Paddle control
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "w" && paddle1.y > 0) paddle1.y -= 10;
+    if (e.key === "s" && paddle1.y < canvas.height - paddle1.h) paddle1.y += 10;
+    if (e.key === "ArrowUp" && paddle2.y > 0) paddle2.y -= 10;
+    if (e.key === "ArrowDown" && paddle2.y < canvas.height - paddle2.h) paddle2.y += 10;
+  });
+  
+  let pongInterval;
+  document.getElementById("start-pong").addEventListener("click", () => {
+    if (pongInterval) {
+      clearInterval(pongInterval);
+      pongInterval = null;
+      document.getElementById("start-pong").textContent = "Start Game";
+    } else {
+      pongInterval = setInterval(drawPong, 16);
+      document.getElementById("start-pong").textContent = "Pause";
+    }
+  });
+</script>
+
+<style>
+  .window[data-app="pong"] {
+    width: 320px;
+    height: 280px;
+    background: #000;
+  }
+  #pong-canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #333;
+  }
+  .pong-controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    color: #FFF;
+    font-family: monospace;
+  }
+  #start-pong {
+    padding: 5px 10px;
+    background: #FFF;
+    color: #000;
+    border: none;
+  }
+</style>
