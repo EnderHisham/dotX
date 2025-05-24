@@ -1,9 +1,12 @@
+<body>
+<center>
 <div class="window" data-app="pixel-art">
   <div class="title-bar">Pixel Art</div>
   <div class="pixel-grid" id="pixel-canvas"></div>
   <button id="clear-pixels">Clear</button>
 </div>
-
+</center>
+</body>
 <script>
   const canvas = document.getElementById("pixel-canvas");
   let isDrawing = false;
@@ -29,6 +32,9 @@
 </script>
 
 <style>
+  body{
+   background-color: orange;
+  }
   .window[data-app="pixel-art"] {
     width: 220px;
     height: 270px;
