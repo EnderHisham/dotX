@@ -1,54 +1,46 @@
-<body>
 <center>
 <div class="window" data-app="pixel-art">
-  <div class="title-bar">Pixel Art</div>
-  <div class="pixel-grid" id="pixel-canvas"></div>
-  <button id="clear-pixels">Clear</button>
+  <div class="title-bar">Pixel Art Pro</div>
+  <div class="color-picker">
+    <input type="color" id="art-color" value="#FF0000">
+  </div>
+  <div class="pixel-grid" id="art-canvas"></div>
+  <button id="save-art">💾 Save Art</button>
 </div>
 </center>
-</body>
 <script>
-  const canvas = document.getElementById("pixel-canvas");
-  let isDrawing = false;
-  let currentColor = "#000000";
-
-  // Create 10x10 grid
-  for (let i = 0; i < 100; i++) {
+  // 16x16 grid
+  const canvas = document.getElementById("art-canvas");
+  for (let i = 0; i < 256; i++) {
     const pixel = document.createElement("div");
     pixel.className = "pixel";
-    pixel.addEventListener("mousedown", () => {
-      isDrawing = true;
-      pixel.style.backgroundColor = currentColor;
-    });
-    pixel.addEventListener("mouseenter", () => {
-      if (isDrawing) pixel.style.backgroundColor = currentColor;
+    pixel.addEventListener("click", () => {
+      pixel.style.backgroundColor = document.getElementById("art-color").value;
     });
     canvas.appendChild(pixel);
   }
 
-  document.getElementById("clear-pixels").addEventListener("click", () => {
-    document.querySelectorAll(".pixel").forEach(p => p.style.backgroundColor = "");
+  document.getElementById("save-art").addEventListener("click", () => {
+    localStorage.setItem("dotx-pixel-art", canvas.innerHTML);
+    alert("Art saved!");
   });
 </script>
 
 <style>
-  body{
-   background-color: orange;
-  }
   .window[data-app="pixel-art"] {
-    width: 220px;
-    height: 270px;
+    width: 340px;
+    height: 400px;
   }
   .pixel-grid {
     display: grid;
-    grid-template-columns: repeat(10, 20px);
+    grid-template-columns: repeat(16, 20px);
     gap: 1px;
     margin: 10px;
   }
   .pixel {
     width: 20px;
     height: 20px;
-    border: 1px solid #ddd;
+    background: #222;
     cursor: crosshair;
   }
 </style>
