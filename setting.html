@@ -1,0 +1,165 @@
+<div class="window" data-app="settings">
+  <div class="title-bar">⚙️ DotX Settings</div>
+  <div class="settings-container">
+    <h3 id="h33">this is beta version of setting there are many chance that it might not work</h3>
+    <!-- THEME SELECTOR -->
+    <div class="setting-group">
+      <h3>Theme</h3>
+      <select id="theme-select">
+        <option value="matrix">Matrix Green</option>
+        <option value="dark">Dark Mode</option>
+        <option value="light">Light Mode</option>
+        <option value="purple">Cyber Purple</option>
+      </select>
+    </div>
+
+    <!-- WINDOW COLOR PICKER -->
+    <div class="setting-group">
+      <h3>Window Color</h3>
+      <input type="color" id="window-color" value="#00FF00">
+    </div>
+
+    <!-- USERNAME CUSTOMIZATION -->
+    <div class="setting-group">
+      <h3>Username</h3>
+      <input type="text" id="username-input" placeholder="Your hacker name">
+    </div>
+
+    <!-- CLOCK FORMAT -->
+    <div class="setting-group">
+      <h3>Clock Format</h3>
+      <label><input type="radio" name="clock-format" value="12h" checked> 12-hour</label>
+      <label><input type="radio" name="clock-format" value="24h"> 24-hour</label>
+    </div>
+
+    <!-- RESET BUTTON -->
+    <div class="setting-group">
+      <button id="reset-settings">🔙 Reset Defaults</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Load saved settings
+  function loadSettings() {
+    const settings = JSON.parse(localStorage.getItem('dotx-settings')) || {};
+    
+    if (settings.theme) document.getElementById('theme-select').value = settings.theme;
+    if (settings.windowColor) document.getElementById('window-color').value = settings.windowColor;
+    if (settings.username) document.getElementById('username-input').value = settings.username;
+    if (settings.clockFormat) document.querySelector(`input[value="${settings.clockFormat}"]`).checked = true;
+    
+    applySettings(settings);
+  }
+
+  // Apply settings to the OS
+  function applySettings(settings) {
+    // Theme
+    document.body.className = settings.theme || 'matrix';
+    
+    // Window color
+    document.documentElement.style.setProperty('--window-color', settings.windowColor || '#00FF00');
+    
+    // Username (for terminal prompts)
+    if (settings.username) {
+      document.querySelectorAll('.prompt').forEach(el => {
+        el.textContent = `${settings.username}@dotx:~$`;
+      });
+    }
+    
+    // Clock format (if you have a clock app)
+    if (settings.clockFormat) {
+      localStorage.setItem('dotx-clock-format', settings.clockFormat);
+    }
+  }
+
+  // Save settings when changed
+  document.querySelectorAll('#theme-select, #window-color, #username-input, input[name="clock-format"]').forEach(el => {
+    el.addEventListener('change', () => {
+      const settings = {
+        theme: document.getElementById('theme-select').value,
+        windowColor: document.getElementById('window-color').value,
+        username: document.getElementById('username-input').value,
+        clockFormat: document.querySelector('input[name="clock-format"]:checked').value
+      };
+      localStorage.setItem('dotx-settings', JSON.stringify(settings));
+      applySettings(settings);
+    });
+  });
+
+  // Reset button
+  document.getElementById('reset-settings').addEventListener('click', () => {
+    localStorage.removeItem('dotx-settings');
+    loadSettings();
+  });
+
+  // Initialize
+  loadSettings();
+</script>
+
+<style>
+  /* MATRIX (DEFAULT) */
+body.matrix {
+  background: #000;
+  --window-color: #00FF00;
+}
+body.matrix .window {
+  border-color: var(--window-color);
+}
+
+/* DARK MODE */
+body.dark {
+  background: #111;
+  --window-color: #FF5555;
+}
+
+/* LIGHT MODE */
+body.light {
+  background: #EEE;
+  --window-color: #0066FF;
+  color: #000;
+}
+body.light .window {
+  background: #FFF;
+}
+
+/* CYBER PURPLE */
+body.purple {
+  background: #0D0221;
+  --window-color: #FF2A6D;
+}
+  .window[data-app="settings"] {
+    width: 350px;
+    height: 400px;
+  }
+  .settings-container {
+    padding: 15px;
+    overflow-y: auto;
+    height: calc(100% - 30px);
+  }
+  .setting-group {
+    margin-bottom: 20px;
+  }
+  .setting-group h3 {
+    margin: 0 0 8px 0;
+    color: var(--window-color, #00FF00);
+  }
+  select, input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+  }
+  #reset-settings {
+    background: #FF5555;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+  #h33{
+    color: #FF5555;
+  }
+</style>
