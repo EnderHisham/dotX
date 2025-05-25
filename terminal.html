@@ -1,0 +1,128 @@
+<div class="window" data-app="terminal">
+  <div class="title-bar">DotX Terminal</div>
+  <div class="terminal-body" id="terminal-output">
+    <div>> DotX terminal</div>
+  </div>
+  <div class="terminal-input">
+    <span class="prompt">$</span>
+    <input type="text" id="command-input" autofocus>
+  </div>
+</div>
+
+<script>
+  // ===== FIXED INPUT HANDLING =====
+  const terminalOutput = document.getElementById('terminal-output');
+  const commandInput = document.getElementById('command-input');
+
+  // Improved input handler
+  let currentCallback = null;
+
+  commandInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const command = commandInput.value.trim();
+      commandInput.value = '';
+      
+      if (currentCallback) {
+        currentCallback(command);
+      }
+    }
+  });
+
+  // Simplified input function
+  function getInput(promptText, callback) {
+    terminalOutput.innerHTML += `<div>${promptText}</div>`;
+    currentCallback = callback;
+    commandInput.focus(); // Ensure focus stays on input
+  }
+
+  // ===== REST OF TERMINAL LOGIC =====
+  function startTerminal() {
+    getInput("type your command or type help", (a) => {
+      if (a === "help") {
+        terminalOutput.innerHTML += `
+          <div>echo - Repeat input</div>
+          <div>calculator - Basic math</div>
+        `;
+        startTerminal();
+      }
+      else if (a === "echo") {
+        getInput("Enter text to echo:", (text) => {
+          terminalOutput.innerHTML += `<div>${text}</div>`;
+          startTerminal();
+        });
+      }
+      else if (a === "calculator") {
+        calculatorMode();
+      }
+      else {
+        terminalOutput.innerHTML += `<div>Command not found: ${a}</div>`;
+        startTerminal();
+      }
+    });
+  }
+
+  function calculatorMode() {
+    terminalOutput.innerHTML += `
+      <div>CALCULATOR</div>
+      <div>Enter operation (+, -, *, /):</div>
+    `;
+    
+    getInput("", (operator) => {
+      if (!['+', '-', '*', '/'].includes(operator)) {
+        terminalOutput.innerHTML += `<div>Invalid operator</div>`;
+        return calculatorMode();
+      }
+      
+      getInput("First number:", (num1) => {
+        getInput("Second number:", (num2) => {
+          const n1 = parseFloat(num1);
+          const n2 = parseFloat(num2);
+          
+          let result;
+          switch(operator) {
+            case '+': result = n1 + n2; break;
+            case '-': result = n1 - n2; break;
+            case '*': result = n1 * n2; break;
+            case '/': result = n1 / n2; break;
+          }
+          
+          terminalOutput.innerHTML += `<div>Result: ${result}</div>`;
+          startTerminal();
+        });
+      });
+    });
+  }
+
+  // Start the terminal
+  startTerminal();
+</script>
+
+<style>
+  body{
+    background-color: #000;
+    color: rgb(255, 255, 255);
+  }
+  /* ===== FIXED STYLING ===== */
+  .window[data-app="terminal"] {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+  }
+  
+  .terminal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .terminal-input {
+    border-top: 1px solid #00ff0033;
+    padding: 10px;
+    background: #000;
+  }
+  
+  #command-input {
+    width: calc(100% - 20px);
+    margin-left: 5px;
+  }
+</style>
