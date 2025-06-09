@@ -1,6 +1,6 @@
 body{
-  background-color: #0e76a8;
-
+  background-color: #088f8f;
+  
 }
 #b{
   font-size: 50pt;
@@ -8,23 +8,25 @@ body{
 #b1 {
   position: relative;
   bottom: 91pt;
-  left: 60pt;
+  left: 100pt;
   font-size: 50pt;
+  text-align: center;
 }
 h1{
-  font-family: 'Times New Roman', Times, serif;
+  font-family: sans-serif;
   color: cornsilk;
+  font-size: 50pt;
 }
 #h22{
   position: relative;
-  bottom: 80pt;
+  bottom: 75pt;
   font-size: 10pt;
   list-style-type: none;
 
 }
 header{
   position: relative;
-  top: 150pt;
+  top: 240pt;
   
   justify-content:baseline;
   background-color: aliceblue;
@@ -50,4 +52,36 @@ ul{
 }
 nav{
   background-color: white;
+}
+div{
+  animation-name: hello;
+  animation: 20s;
+}
+@keyframes hello{
+  from{background-color: #0e76a8;}
+  to{background-color: aqua;}
+}
+#bs {
+  background-color: skyblue;
+  position: relative;
+  top: 470pt;
+  font-size: 40pt;
+  width: 500pt;
+  border: solid;
+  border-color: skyblue;
+  color: white;
+}
+#b1t{
+  color: white;
+  border: solid;
+  border-color: brown;
+  position: relative;
+  top: 310pt;
+  right: 800pt;
+  font-size: 50pt;
+  height: 80pt;
+  background-color: brown;
+}
+#b1:hover{
+  font-size: 50.5pt;
 }
