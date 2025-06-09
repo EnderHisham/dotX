@@ -8,54 +8,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dotx</title>
 </head>
+<style>
+  #name{
+ font-family:  serif;
+ font-weight: bold;
+ color: coral;
+ font-size: large;
+}
+</style>
 <body>
-  
-<center><h1>DotX</h1></center>
+ <div>
+   <p id="name"></p>
+
  <a href="browser.html">
   <br><br><br>
-  <button id="b"><i class="fa-solid fa-magnifying-glass"></i></button>
+  <button id="bs" type="button"  onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
  </a>
  <a href="calculator.html">
   <br><br><br>
-  <button id="b1"><i class="fa-solid fa-calculator"></i></button>
+  <button id="b1" type="button"  onclick="calculator()"><i class="fa-solid fa-calculator"></i></button>
  </a>
  <a href="note.html">
-  <button id="b1"><i class="fa-solid fa-book"></i></button>
+  <button id="b1" type="button"  onclick="note()"><i class="fa-solid fa-book"></i></button>
 </a>
 <a href="snake.html">
-  <button id="b1">S</button>
+  <button id="b1" type="button"  onclick="snake()">S</button>
 </a>
 <a href="art.html">
-  <button id="b1"><i class="fa-solid fa-paintbrush"></i></button>
+  <button id="b1" type="button"  onclick="art()"><i class="fa-solid fa-paintbrush"></i></button>
 </a>
 <a href="dr.html">
-  <button id="b1"><i class="fa-solid fa-dice"></i></button>
+  <button id="b1" type="button"  onclick="myFunction()"><i class="fa-solid fa-dice"></i></button>
 </a>
 <a href="t.html">
-  <button id="b1"><i class="fa-solid fa-user-secret"></i></button>
+  <button type="button" onclick="rain()" id="b1"><i class="fa-solid fa-user-secret"></i></button>
 </a>
 <a href="p.html">
-  <button id="b1"><i class="fa-solid fa-table-tennis-paddle-ball"></i></button>
+  <button id="b1" type="button"  onclick="ping()"><i class="fa-solid fa-table-tennis-paddle-ball"></i></button>
 </a>
 <a href="v.html">
-  <button id="b1"><i class="fa-solid fa-microphone"></i></button>
+  <button id="b1" type="button"  onclick="voice()"><i class="fa-solid fa-microphone"></i></button>
 </a>
 <a href="setting.html">
-  <button id="b1"><i class="fa-solid fa-gear"></i></button>
+  <button id="b1" type="button"  onclick="setting()"><i class="fa-solid fa-gear"></i></button>
 </a>
 <a href="codeeditor.html">
-  <button id="b1"><i class="fa-solid fa-code"></i></button>
+  <button id="b1" type="button"  onclick="code()"><i class="fa-solid fa-code"></i></button>
 </a>
 <a href="artpro.html">
-  <button id="b1"><i class="fa-solid fa-brush"></i></button>
+  <button id="b1" type="button"  onclick="ap()"><i class="fa-solid fa-brush"></i></button>
 </a>
 <a href="history.html">
-  <button id="b1" ><i class="fas fa-history"></i></button>
+  <button id="b1" type="button"  onclick="history()"><i class="fas fa-history"></i></button>
 </a>
-<a href="homefunction.html">
-  <button id="b1" ><i class="fa-solid fa-terminal"></i></button>
+<a href="notepad2.html">
+  <button id="b1" type="button"  onclick="np()"><i class="fa fa-file" aria-hidden="true"></i></button>
 </a>
+<a href="terminal.html">
+  <button id="b1t"><i class="fa-solid fa-terminal"></i></button>
 </a>
+
+<div class="shape2"><center><h1>DotX</h1></center></div>
+ </div>
 <header>
   <nev>
     <ul>
@@ -63,11 +77,11 @@
       <li><a id="a1" href="browser.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
       <li><a id="a1" href="clock.html"><i class="fa-solid fa-clock"></i></a></li>
       <li><a id="a1" href="v.html"><i class="fa-solid fa-microphone"></i></a>
-      <li><a id="a1" href="terminal.html"><i class="fa-solid fa-terminal"></i></a></li>
+      <li><a id="a1" href="terminal.html"><i class="fa-solid fa-terminal"></i></a>
       <li><a id="a1" href="history.html"><i class="fas fa-history"></i></a></li>
     </ul>
   </nev>
 </header>
 </body>
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 </html>
