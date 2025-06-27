@@ -133,9 +133,18 @@ p{
   <center><div><h1>important note</h1>
     <p>this webpage for dasktop not for mobile user!!</p> 
     <p>this is an mini os, you can use it for basic stuff stil it is getting updated</p>
-    <a href="main.html"><button id="b1" type="button" onclick="aFunction()">start</button></a>
+    <a href="launcher.html"><button id="b1" type="button" onclick="aFunction()">start</button></a>
+     <h3 id="wait"></h3>
   </div></center>
 
  <h1 id="end">.</h1>
 </body>
+<script>
+  function aFunction(){
+    setTimeout(() => {
+     document.getElementById("wait").innerText = "wait"
+
+    },2000)
+  }
+</script>
 </html>
