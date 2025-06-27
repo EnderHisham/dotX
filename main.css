@@ -26,7 +26,7 @@ h1{
 }
 header{
   position: relative;
-  top: 240pt;
+  top: 185pt;
   
   justify-content:baseline;
   background-color: aliceblue;
@@ -64,7 +64,7 @@ div{
 #bs {
   background-color: skyblue;
   position: relative;
-  top: 470pt;
+  top: 455pt;
   font-size: 40pt;
   width: 500pt;
   border: solid;
@@ -76,7 +76,7 @@ div{
   border: solid;
   border-color: brown;
   position: relative;
-  top: 310pt;
+  top: 290pt;
   right: 800pt;
   font-size: 50pt;
   height: 80pt;
@@ -84,4 +84,10 @@ div{
 }
 #b1:hover{
   font-size: 50.5pt;
+}
+#time{
+  font-size: 2em;
+  position: relative;
+  top: 250pt;
+  left: 102pt;
 }
