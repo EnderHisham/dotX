@@ -16,8 +16,8 @@
  font-size: large;
 }
 </style>
-<body>
- <div>
+<body> 
+
    <p id="name"></p>
 
  <a href="browser.html">
@@ -67,7 +67,7 @@
 <a href="terminal.html">
   <button id="b1t"><i class="fa-solid fa-terminal"></i></button>
 </a>
-
+<h1 id="time"></h1>
 <div class="shape2"><center><h1>DotX</h1></center></div>
  </div>
 <header>
@@ -83,5 +83,8 @@
   </nav>
 </header>
 </body>
-<script src="scripts.js"></script>
+<script>
+const time = new Date();
+document.getElementById("time").innerText = `${time.toLocaleString()}`;
+</script>
 </html>
